@@ -1,7 +1,10 @@
+using PostmanLibrary;
+
 namespace PostmanUI;
 
 public partial class Dashboard : Form
 {
+    private readonly ApiAccess apiAccess = new();
     public Dashboard()
     {
         InitializeComponent();
@@ -25,7 +28,7 @@ public partial class Dashboard : Form
         {
             systemStatus.Text = "Calling API...";
 
-            await Task.Delay(5000);
+            resultstxt.Text = await apiAccess.CallApiAsync(ApiText.Text);
             systemStatus.Text = "Ready";
         }
         catch (Exception ex)

@@ -52,7 +52,7 @@
             // APIinput
             // 
             APIinput.AutoSize = true;
-            APIinput.Location = new Point(27, 100);
+            APIinput.Location = new Point(27, 95);
             APIinput.Name = "APIinput";
             APIinput.Size = new Size(69, 41);
             APIinput.TabIndex = 1;
@@ -63,7 +63,7 @@
             ApiText.BorderStyle = BorderStyle.FixedSingle;
             ApiText.Location = new Point(102, 93);
             ApiText.Name = "ApiText";
-            ApiText.Size = new Size(918, 47);
+            ApiText.Size = new Size(1027, 47);
             ApiText.TabIndex = 2;
             // 
             // resultstxt
@@ -74,7 +74,7 @@
             resultstxt.Name = "resultstxt";
             resultstxt.ReadOnly = true;
             resultstxt.ScrollBars = ScrollBars.Both;
-            resultstxt.Size = new Size(1100, 498);
+            resultstxt.Size = new Size(1251, 590);
             resultstxt.TabIndex = 3;
             resultstxt.TextChanged += resultstxt_TextChanged;
             // 
@@ -82,9 +82,9 @@
             // 
             CallApi.BackColor = Color.DodgerBlue;
             CallApi.ForeColor = Color.SeaShell;
-            CallApi.Location = new Point(1026, 93);
+            CallApi.Location = new Point(1135, 92);
             CallApi.Name = "CallApi";
-            CallApi.Size = new Size(101, 48);
+            CallApi.Size = new Size(143, 48);
             CallApi.TabIndex = 4;
             CallApi.Text = "Send";
             CallApi.UseVisualStyleBackColor = false;
@@ -94,9 +94,9 @@
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { systemStatus });
-            statusStrip.Location = new Point(0, 757);
+            statusStrip.Location = new Point(0, 850);
             statusStrip.Name = "statusStrip";
-            statusStrip.Size = new Size(1628, 37);
+            statusStrip.Size = new Size(1637, 37);
             statusStrip.TabIndex = 5;
             statusStrip.Text = "statusStrip1";
             // 
@@ -121,7 +121,7 @@
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1628, 794);
+            ClientSize = new Size(1637, 887);
             Controls.Add(Results);
             Controls.Add(statusStrip);
             Controls.Add(CallApi);
