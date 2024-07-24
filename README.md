@@ -5,7 +5,7 @@ This application is ideal for developers and testers. It simplifies API interact
 
 ## Technologies used
 * C#
-*.NET 8
+* .NET 8
 * WinForms
   
 
