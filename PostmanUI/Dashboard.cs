@@ -4,7 +4,7 @@ namespace PostmanUI;
 
 public partial class Dashboard : Form
 {
-    private readonly ApiAccess apiAccess = new();
+    private readonly IApiAccess apiAccess = new ApiAccess();
     public Dashboard()
     {
         InitializeComponent();
@@ -24,10 +24,17 @@ public partial class Dashboard : Form
     // clicking the GO button calls the api(s) and get a JSON value
     private async void CallApi_Click(object sender, EventArgs e)
     {
+        systemStatus.Text = "Calling API...";
+        resultstxt.Text = "";
+
+        if (apiAccess.ValidUrl(ApiText.Text) == false)
+        {
+            systemStatus.Text = "Invalid Url";
+            return;
+        }
         try
         {
-            systemStatus.Text = "Calling API...";
-
+            
             resultstxt.Text = await apiAccess.CallApiAsync(ApiText.Text);
             systemStatus.Text = "Ready";
         }
