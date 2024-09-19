@@ -31,12 +31,19 @@
             Header = new Label();
             APIinput = new Label();
             ApiText = new TextBox();
-            resultstxt = new TextBox();
             CallApi = new Button();
             statusStrip = new StatusStrip();
             systemStatus = new ToolStripStatusLabel();
-            Results = new Label();
+            HttpVerbSelector = new ComboBox();
+            CallData = new TabControl();
+            BodyTab = new TabPage();
+            bodyText = new TextBox();
+            ResultsTab = new TabPage();
+            resultstxt = new TextBox();
             statusStrip.SuspendLayout();
+            CallData.SuspendLayout();
+            BodyTab.SuspendLayout();
+            ResultsTab.SuspendLayout();
             SuspendLayout();
             // 
             // Header
@@ -61,28 +68,16 @@
             // ApiText
             // 
             ApiText.BorderStyle = BorderStyle.FixedSingle;
-            ApiText.Location = new Point(102, 93);
+            ApiText.Location = new Point(253, 95);
             ApiText.Name = "ApiText";
-            ApiText.Size = new Size(1027, 47);
+            ApiText.Size = new Size(858, 47);
             ApiText.TabIndex = 2;
-            // 
-            // resultstxt
-            // 
-            resultstxt.BorderStyle = BorderStyle.FixedSingle;
-            resultstxt.Location = new Point(27, 235);
-            resultstxt.Multiline = true;
-            resultstxt.Name = "resultstxt";
-            resultstxt.ReadOnly = true;
-            resultstxt.ScrollBars = ScrollBars.Both;
-            resultstxt.Size = new Size(1251, 590);
-            resultstxt.TabIndex = 3;
-            resultstxt.TextChanged += resultstxt_TextChanged;
             // 
             // CallApi
             // 
             CallApi.BackColor = Color.DodgerBlue;
             CallApi.ForeColor = Color.SeaShell;
-            CallApi.Location = new Point(1135, 92);
+            CallApi.Location = new Point(1135, 95);
             CallApi.Name = "CallApi";
             CallApi.Size = new Size(143, 48);
             CallApi.TabIndex = 4;
@@ -107,14 +102,71 @@
             systemStatus.Size = new Size(76, 31);
             systemStatus.Text = "Ready";
             // 
-            // Results
+            // HttpVerbSelector
             // 
-            Results.AutoSize = true;
-            Results.Location = new Point(27, 191);
-            Results.Name = "Results";
-            Results.Size = new Size(146, 41);
-            Results.TabIndex = 6;
-            Results.Text = "Response";
+            HttpVerbSelector.DropDownStyle = ComboBoxStyle.DropDownList;
+            HttpVerbSelector.FormattingEnabled = true;
+            HttpVerbSelector.Items.AddRange(new object[] { "GET", "POST", "PUT", "PATCH", "DELETE" });
+            HttpVerbSelector.Location = new Point(102, 93);
+            HttpVerbSelector.Name = "HttpVerbSelector";
+            HttpVerbSelector.Size = new Size(145, 49);
+            HttpVerbSelector.TabIndex = 7;
+            HttpVerbSelector.SelectedIndexChanged += HttpVerbSelector_SelectedIndexChanged;
+            // 
+            // CallData
+            // 
+            CallData.Controls.Add(BodyTab);
+            CallData.Controls.Add(ResultsTab);
+            CallData.Location = new Point(39, 184);
+            CallData.Name = "CallData";
+            CallData.SelectedIndex = 0;
+            CallData.Size = new Size(1256, 570);
+            CallData.TabIndex = 8;
+            // 
+            // BodyTab
+            // 
+            BodyTab.Controls.Add(bodyText);
+            BodyTab.Location = new Point(4, 50);
+            BodyTab.Name = "BodyTab";
+            BodyTab.Padding = new Padding(3);
+            BodyTab.Size = new Size(1248, 516);
+            BodyTab.TabIndex = 0;
+            BodyTab.Text = "Body";
+            BodyTab.UseVisualStyleBackColor = true;
+            // 
+            // bodyText
+            // 
+            bodyText.BorderStyle = BorderStyle.FixedSingle;
+            bodyText.Dock = DockStyle.Fill;
+            bodyText.Location = new Point(3, 3);
+            bodyText.Multiline = true;
+            bodyText.Name = "bodyText";
+            bodyText.ScrollBars = ScrollBars.Both;
+            bodyText.Size = new Size(1242, 510);
+            bodyText.TabIndex = 4;
+            // 
+            // ResultsTab
+            // 
+            ResultsTab.Controls.Add(resultstxt);
+            ResultsTab.Location = new Point(4, 29);
+            ResultsTab.Name = "ResultsTab";
+            ResultsTab.Padding = new Padding(3);
+            ResultsTab.Size = new Size(1248, 537);
+            ResultsTab.TabIndex = 1;
+            ResultsTab.Text = "Results";
+            ResultsTab.UseVisualStyleBackColor = true;
+            // 
+            // resultstxt
+            // 
+            resultstxt.BorderStyle = BorderStyle.FixedSingle;
+            resultstxt.Dock = DockStyle.Fill;
+            resultstxt.Location = new Point(3, 3);
+            resultstxt.Multiline = true;
+            resultstxt.Name = "resultstxt";
+            resultstxt.ReadOnly = true;
+            resultstxt.ScrollBars = ScrollBars.Both;
+            resultstxt.Size = new Size(1242, 531);
+            resultstxt.TabIndex = 4;
             // 
             // Dashboard
             // 
@@ -122,10 +174,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1637, 887);
-            Controls.Add(Results);
+            Controls.Add(CallData);
+            Controls.Add(HttpVerbSelector);
             Controls.Add(statusStrip);
             Controls.Add(CallApi);
-            Controls.Add(resultstxt);
             Controls.Add(ApiText);
             Controls.Add(APIinput);
             Controls.Add(Header);
@@ -136,6 +188,11 @@
             Load += Dashboard_Load;
             statusStrip.ResumeLayout(false);
             statusStrip.PerformLayout();
+            CallData.ResumeLayout(false);
+            BodyTab.ResumeLayout(false);
+            BodyTab.PerformLayout();
+            ResultsTab.ResumeLayout(false);
+            ResultsTab.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,10 +202,14 @@
         private Label Header;
         private Label APIinput;
         private TextBox ApiText;
-        private TextBox resultstxt;
         private Button CallApi;
         private StatusStrip statusStrip;
-        private Label Results;
         private ToolStripStatusLabel systemStatus;
+        private ComboBox HttpVerbSelector;
+        private TabControl CallData;
+        private TabPage BodyTab;
+        private TabPage ResultsTab;
+        private TextBox resultstxt;
+        private TextBox bodyText;
     }
 }
